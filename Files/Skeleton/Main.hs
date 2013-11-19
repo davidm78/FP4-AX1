@@ -1,3 +1,9 @@
+{- David Mcinnes 0901288m
+Functional Programming 4
+Assessed Exercise 1
+21/11/13 
+The code is currently totally unimplemented. -}
+
 module Main where
 import F95SrcIO ( read_F95_src, write_F95_src )
 import F95OpenACCParser ( extract_OpenACC_regions_from_F95_src )
@@ -6,6 +12,8 @@ import F95ParDeclParser ( f95_par_decl_parser )
 import F95Types
 import OpenCLAPIGenerator ( gen_OpenCL_API_calls )
 import EvalExpr    
+import System.IO
+import Data.Char(toUpper)
 import qualified Data.Map as H
 
 {-

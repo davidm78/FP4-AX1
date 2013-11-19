@@ -21,7 +21,8 @@ run_parser p str =  case parse p "" str of
     Right val  -> val  
 
 f95_var_decl_parser :: Parser VarDecl
-f95_var_decl_parser = return dummyVarDecl
+f95_var_decl_parser = do 
+  
       
 type_parser :: Parser VarType
 type_parser = return dummyVarType

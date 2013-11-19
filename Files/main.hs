@@ -1,14 +1,8 @@
-{- David Mcinnes 0901288m
-Functional Programming 4
-Assessed Exercise 1
-21/11/13
-This file is fully working -}
-
-module F95SrcIO (
-		read_F95_src,
-        write_F95_src
-) where
 import Data.Char (toLower)
+
+templ_src_name = "module_LES_ocl_TEMPL.f95"
+gen_src_name = "output.f95"
+
 -- Fortran is case-insensitive so turn everything into lowercase
 lc = map toLower
 
@@ -22,3 +16,8 @@ read_F95_src src_name = do
 -- given a list of strings, one per line of source code, and the name of the file, write the strings to the file
 write_F95_src :: String -> [String] -> IO ()
 write_F95_src src_name src_lines = writeFile src_name (unlines src_lines)
+
+main :: IO ()
+main = do
+	lines <- read_F95_src templ_src_name
+	write_F95_src gen_src_name lines
