@@ -1,4 +1,5 @@
-module F95ParDeclParser where
+module F95ParDeclParser 
+where
 import F95Types
 import Text.ParserCombinators.Parsec hiding (State)
 import Text.ParserCombinators.Parsec.Expr
