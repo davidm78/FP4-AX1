@@ -20,11 +20,11 @@ module module_LES_ocl
     ! Parameters
         integer, parameter  :: ip = 150
         integer, parameter  :: jp = 150
-        integer, parameter  :: kp = 90
+        integer, parameter  :: kp = 90    
     ! Arguments
-!$ACC Arguments
+!$ACC Arguments	
         real(kind=4), dimension(0:ip+2,0:jp+2,0:kp+1)  :: p
-!$ACC End Arguments
+!$ACC End Arguments	
         real(kind=4), dimension(0:ip+1,-1:jp+1,0:kp+1)  :: u
         real(kind=4), dimension(0:ip+1,-1:jp+1,0:kp+1)  :: v
         real(kind=4), dimension(0:ip+1,-1:jp+1,-1:kp+1)  :: w
@@ -495,3 +495,4 @@ module module_LES_ocl
     end subroutine convert_from_fgh_old
 
 end module module_LES_ocl
+

@@ -11,20 +11,20 @@ extract_OpenACC_regions_from_F95_src in_src_lines = (extract_arguments in_src_li
 extract_arguments :: [String] -> Bool -> [String]
 extract_arguments [] x = []
 extract_arguments(x:xs) False = if x =~ "!\\$acc arguments"
-								then x:extract_arguments xs True
+								then extract_arguments xs True
 								else extract_arguments xs False
 extract_arguments(x:xs) True = if x =~ "!\\$acc end arguments"
-							   then x:extract_arguments xs False
+							   then extract_arguments xs False
 							   else x:extract_arguments xs True
 
 -- given the source code as a list of lines, extract openACC regions for constarguments
 extract_constarguments :: [String] -> Bool -> [String]
 extract_constarguments [] x = []
 extract_constarguments(x:xs) False = if x =~ "!\\$acc constarguments"
-									 then x:extract_constarguments xs True 
+									 then extract_constarguments xs True 
 									 else extract_constarguments xs False
 extract_constarguments(x:xs) True = if x =~ "!\\$acc end constarguments"
-									then x:extract_constarguments xs False
+									then extract_constarguments xs False
 									else x:extract_constarguments xs True
 
 -- given the source code as a list of lines, extract the perameter declarations

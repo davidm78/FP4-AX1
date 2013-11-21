@@ -1,5 +1,4 @@
-module F95ParDeclParser 
-where
+module F95ParDeclParser where
 import F95Types
 import Text.ParserCombinators.Parsec hiding (State)
 import Text.ParserCombinators.Parsec.Expr
@@ -10,12 +9,15 @@ import F95VarDeclParser
 -- parse a parameter declaration string into a ParDecl 
 f95_par_decl_parser :: Parser ParDecl
 f95_par_decl_parser = do whiteSpace
-                      	 typ <- word
+                      	 typ <- option dummyVarType $ try (type_parser)
                          comma
+                         whiteSpace
                       	 string "parameter"
+                      	 dim <- option [] $ try (dim_parser)
                       	 whiteSpace
-                      	 string "::"
-                      	 nam <- var_expr
+                      	 optional $ string "::"
+                      	 whiteSpace
+                      	 var <- identifier
                       	 string "="
                       	 val <- const_expr
-                      	 return (case typ of {"integer" -> MkParDecl F95Integer [] nam val; "real" -> MkParDecl F95Real [] nam val})
+                      	 return $ MkParDecl typ dim var val

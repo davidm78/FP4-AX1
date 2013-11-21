@@ -2,7 +2,9 @@
 Functional Programming 4
 Assessed Exercise 1
 21/11/13 
-The code is currently totally unimplemented. -}
+The code is currently up to the stage where it can parse VarDecls and ParDecls, as well as extract the
+regions for arguments, constarguments and parameters and do the file operations. All of the functions
+implemented in F95SrcIO.hs, F95OpenACCParser.hs, F95VarDeclParser.hs and F95ParDeclParser should work -}
 
 module Main where
 import F95SrcIO ( read_F95_src, write_F95_src )

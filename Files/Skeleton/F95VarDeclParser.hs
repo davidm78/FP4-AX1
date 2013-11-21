@@ -22,7 +22,7 @@ run_parser p str =  case parse p "" str of
 
 f95_var_decl_parser :: Parser VarDecl
 f95_var_decl_parser = do whiteSpace
-                         typ <- option dummyVarType $ try type_parser
+                         typ <- option dummyVarType $ try (type_parser)
                          optional comma
                          dim <- option [] $ try (dim_parser)
                          optional comma
