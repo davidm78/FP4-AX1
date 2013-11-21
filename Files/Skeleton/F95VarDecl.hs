@@ -5,9 +5,10 @@ module F95VarDecl where
 This is the datatype for representing a parsed variable declaration
 	
 -}
+
 data VarDecl = MkVarDecl {
 	vd_vartype :: VarType
-	,vd_dimension :: [Range]	
+	,vd_dimension :: [Range]
 	,vd_intent :: Intent
 	,vd_varlist :: [VarName]
 	,vd_argmode :: OclArgMode
